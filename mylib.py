@@ -30,7 +30,55 @@ class LibraryManagement:
         }
         self.books.append(new_book)
         self.save_db()
+        print(f'Книга c id {id} успешно добавлена!')
         main()
+
+    def delete_book(self):
+        id_book = input('Введите идентификатор книги: ').strip()
+        for book in self.books:
+            if book['id'] == id_book:
+                self.books.remove(book)
+                self.save_db()
+                print(f'Книга "{book["title"]}" успешно удалена!')
+                return main()
+        print('Книга с таким идентификатором не найдена!')
+        main()
+
+    def find_book(self):
+        flag = False
+        print('1 - Название книги', '2 - Автор книги', '3 - Год издания книги', sep='\n')
+        action = input('Введите метод поиска: ').strip()
+        if action == '1':
+            title = input('Введите название книги: ').strip()
+            for book in self.books:
+                if title.lower() in book['title'].lower():
+                    flag = True
+                    print(f'Найдена книга "{book["title"]}" автора "{book["author"]}"')
+            if not flag:
+                print('Книга с таким названием не найдена!')
+
+        elif action == '2':
+            author = input('Введите автора книги: ').strip()
+            for book in self.books:
+                if author.lower() in book['author'].lower():
+                    flag = True
+                    print(f'Найдена книга "{book["title"]}" автора "{book["author"]}"')
+            if not flag:
+                print('Книга с таким названием не найдена!')
+
+        elif action == '3':
+            year = input('Введите год издания книги: ').strip()
+            for book in self.books:
+                if book['year'] == year:
+                    print(f'Найдена книга "{book["title"]}" автора "{book["author"]}"')
+                    flag = True
+            if not flag: (
+                print('Книга с таким годом издания не найдена!'))
+
+        else: print('Неверный ввод!')
+        main()
+
+
 
 
 def main():
@@ -41,10 +89,10 @@ def main():
     action = input('Введите действие: ')
     if action == '1':
         lib.add_book()
-    # elif action == '2':
-    #     self.delete_book()
-    # elif action == '3':
-    #     self.find_book()
+    elif action == '2':
+        lib.delete_book()
+    elif action == '3':
+        lib.find_book()
     # elif action == '4':
     #     self.show_all_books()
     # elif action == '5':
