@@ -78,7 +78,29 @@ class LibraryManagement:
         else: print('Неверный ввод!')
         main()
 
+    def show_all_books(self):
+        for book in self.books:
+            print(
+                f'id: {book["id"]}, название: {book["title"]}, автор: {book["author"]}, год: {book["year"]}, статус: {book["status"]}',
+                sep='\n')
+        main()
 
+    def change_book_status(self):
+        id_book = input('Введите идентификатор книги: ').strip()
+        for book in self.books:
+            if book['id'] == id_book:
+                print('1 - в наличии', '2 - выдана', sep='\n')
+                new_status = input('Введите статус книги: ').strip()
+                if new_status == '1':
+                    book['status'] = 'в наличии'
+                elif new_status == '2':
+                    book['status'] = 'выдана'
+                else:
+                    print('Неверный ввод!')
+                self.save_db()
+                print(f'Статус книги "{book["title"]}" изменен на "{book["status"]}"')
+                return main()
+            print('Книга с таким идентификатором не найдена!')
 
 
 def main():
@@ -93,12 +115,12 @@ def main():
         lib.delete_book()
     elif action == '3':
         lib.find_book()
-    # elif action == '4':
-    #     self.show_all_books()
-    # elif action == '5':
-    #     self.change_book_status()
-    # else:
-    #     print('Неверный ввод!')
+    elif action == '4':
+        lib.show_all_books()
+    elif action == '5':
+        lib.change_book_status()
+    else:
+        print('Неверный ввод!')
 
 
 if __name__ == '__main__':
