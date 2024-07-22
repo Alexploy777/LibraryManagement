@@ -137,23 +137,26 @@ def main() -> None:
     """
     Основное меню приложения.
     """
-    db_file_name: str = 'library.json'
-    lib: LibraryManagement = LibraryManagement(db_file_name)
-    print('1 - Добавить книгу', '2 - Удалить книгу', '3 - Найти книгу', '4 - Отобразить все книги',
-          '5 - Изменить статус книги', sep='\n')
-    action: str = input('Введите действие: ')
-    if action == '1':
-        lib.add_book()
-    elif action == '2':
-        lib.delete_book()
-    elif action == '3':
-        lib.find_book()
-    elif action == '4':
-        lib.show_all_books()
-    elif action == '5':
-        lib.change_book_status()
-    else:
-        print('Неверный ввод!')
+    try:
+        db_file_name: str = 'library.json'
+        lib: LibraryManagement = LibraryManagement(db_file_name)
+        print('1 - Добавить книгу', '2 - Удалить книгу', '3 - Найти книгу', '4 - Отобразить все книги',
+              '5 - Изменить статус книги', sep='\n')
+        action: str = input('Введите действие: ')
+        if action == '1':
+            lib.add_book()
+        elif action == '2':
+            lib.delete_book()
+        elif action == '3':
+            lib.find_book()
+        elif action == '4':
+            lib.show_all_books()
+        elif action == '5':
+            lib.change_book_status()
+        else:
+            print('Неверный ввод!')
+    except KeyboardInterrupt:
+        print('\nПрограмма завершена пользователем.')
 
 
 if __name__ == '__main__':
