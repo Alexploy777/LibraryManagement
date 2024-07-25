@@ -46,7 +46,7 @@ class LibraryManagement:
         self.books.append(new_book)
         self.save_db()
         print(f'Книга c id {id} успешно добавлена!')
-        main()
+        # main()
 
     def delete_book(self) -> None:
         """
@@ -60,7 +60,7 @@ class LibraryManagement:
             print(f'Книга "{book["title"]}" успешно удалена!')
         else:
             print('Книга с таким идентификатором не найдена!')
-        main()
+        # main()
 
     def find_book(self) -> None:
         """
@@ -86,7 +86,7 @@ class LibraryManagement:
                 print(f'Книга с таким {search_options[action]} не найдена!')
         else:
             print('Неверный ввод!')
-        main()
+        # main()
 
     def show_all_books(self) -> None:
         """
@@ -96,7 +96,7 @@ class LibraryManagement:
             print(
                 f'id: {book["id"]}, название: {book["title"]}, автор: {book["author"]}, год: {book["year"]}, статус: {book["status"]}'
             )
-        main()
+        # main()
 
     def change_book_status(self) -> None:
         """
@@ -113,12 +113,12 @@ class LibraryManagement:
                 book['status'] = 'выдана'
             else:
                 print('Неверный ввод!')
-                return main()
+                return # main()
             self.save_db()
             print(f'Статус книги "{book["title"]}" изменен на "{book["status"]}"')
         else:
             print('Книга с таким идентификатором не найдена!')
-        main()
+        # main()
 
     def input_year(self) -> str:
         """
