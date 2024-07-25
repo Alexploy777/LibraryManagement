@@ -73,7 +73,8 @@ class LibraryManagement:
         }
         print('1 - Название книги', '2 - Автор книги', '3 - Год издания книги', sep='\n')
         action: str = input('Введите метод поиска: ').strip()
-        if action in search_options:
+        # if action in search_options:
+        if (search_options.get(action)):
             if search_options[action] == 'year':
                 query: str = self.input_year()
             else:
