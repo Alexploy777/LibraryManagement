@@ -1,0 +1,16 @@
+Пример Использования coverage.py
+
+Установите coverage:
+pip install coverage
+
+Запустите тесты с покрытием:
+coverage run -m unittest discover
+
+Сгенерируйте отчет:
+coverage report
+
+Для HTML-отчета:
+coverage html
+
+открыть файл htmlcov/index.html в браузере,
+чтобы увидеть визуальное представление покрытия кода.
