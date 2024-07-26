@@ -10,7 +10,7 @@ class TestLibraryManagement(unittest.TestCase):
         self.db_file_name = 'test_library.json'
         self.library = LibraryManagement(self.db_file_name)
 
-    @patch('builtins.input', side_effect=['Test Book', 'Test Author', '2021'])
+    @patch('builtins.input', side_effect=['Test Book', 'Test Author',  'not_a_year', '2021'])
     @patch('builtins.open', new_callable=mock_open)
     def test_add_book(self, mock_file, mock_input):
         with patch('uuid.uuid4', return_value='1'):
